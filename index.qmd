@@ -103,14 +103,14 @@ The concept originates from a popular statistics meme format that uses simple im
 #| label: final-meme-output
 #| echo: false
 #| fig-cap: "Statistics meme demonstrating selection bias"
-#| layout-ncol: 4
-#| fig-width: 100
-#| fig-height: 100
+#| layout-ncol: 2
+#| fig-width: 20
+#| fig-height: 20
 
 import matplotlib.pyplot as plt
 
 # Create figure with subplots for each component
-fig, axes = plt.subplots(1, 4, figsize=(6, 6))
+fig, axes = plt.subplots(2, 2, figsize=(6, 6))
 
 # Original Image (Reality)
 axes[0, 0].imshow(gray_image, cmap='gray')
@@ -123,14 +123,14 @@ axes[0, 1].set_title('Your Model', fontsize=6, fontweight='bold')
 axes[0, 1].axis('off')
 
 # Block Letter (Selection Bias Pattern)
-axes[0, 2].imshow(block_letter, cmap='gray')
-axes[0, 2].set_title('Selection\n Bias (S)', fontsize=6, fontweight='bold')
-axes[0, 2].axis('off')
+axes[1, 0].imshow(block_letter, cmap='gray')
+axes[1, 0].set_title('Selection\n Bias (S)', fontsize=6, fontweight='bold')
+axes[1, 0].axis('off')
 
 # Masked Stipple (Biased Estimate)
-axes[0, 3].imshow(masked_stipple, cmap='gray')
-axes[0, 3].set_title('Biased\n Estimate', fontsize=6, fontweight='bold')
-axes[0, 3].axis('off')
+axes[1, 1].imshow(masked_stipple, cmap='gray')
+axes[1, 1].set_title('Biased\n Estimate', fontsize=6, fontweight='bold')
+axes[1, 1].axis('off')
 
 plt.tight_layout()
 plt.show()
