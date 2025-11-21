@@ -108,26 +108,26 @@ The concept originates from a popular statistics meme format that uses simple im
 import matplotlib.pyplot as plt
 
 # Create figure with subplots for each component
-fig, axes = plt.subplots(2, 2, figsize=(3, 3))
+fig, axes = plt.subplots(2, 2, figsize=(12, 12))
 
 # Original Image (Reality)
 axes[0, 0].imshow(gray_image, cmap='gray')
-axes[0, 0].set_title('Reality', fontsize=14, fontweight='bold')
+axes[0, 0].set_title('Reality', fontsize=16, fontweight='bold')
 axes[0, 0].axis('off')
 
 # Stippled Image (Your Model)
 axes[0, 1].imshow(stipple_pattern, cmap='gray')
-axes[0, 1].set_title('Your Model', fontsize=14, fontweight='bold')
+axes[0, 1].set_title('Your Model', fontsize=16, fontweight='bold')
 axes[0, 1].axis('off')
 
 # Block Letter (Selection Bias Pattern)
 axes[1, 0].imshow(block_letter, cmap='gray')
-axes[1, 0].set_title('Selection Bias (S)', fontsize=14, fontweight='bold')
+axes[1, 0].set_title('Selection Bias (S)', fontsize=16, fontweight='bold')
 axes[1, 0].axis('off')
 
 # Masked Stipple (Biased Estimate)
 axes[1, 1].imshow(masked_stipple, cmap='gray')
-axes[1, 1].set_title('Biased Estimate', fontsize=14, fontweight='bold')
+axes[1, 1].set_title('Biased Estimate', fontsize=16, fontweight='bold')
 axes[1, 1].axis('off')
 
 plt.tight_layout()
@@ -150,7 +150,9 @@ In this visualization:
 - **Selection Bias (S pattern)**: The systematic filter that determines which data points are observed
 - **Biased Estimate (masked result)**: Our estimate θ̂ based only on the selected data
 
-When data is Missing Completely at Random (MCAR), the expected value of our estimate equals the true parameter, and bias is zero. However, when missingness follows a systematic pattern—as shown by the "S" mask—we get selection bias, and E[θ̂] ≠ θ. The magnitude and direction of this bias depends on the relationship between the selection mechanism and the underlying data structure.
+When data is Missing Completely at Random (MCAR), the expected value of our estimate equals the true parameter, and bias is zero. However, when missingness follows a systematic pattern—as shown by the "S" mask—we get selection bias, and E[θ̂] ≠ θ. The magnitude and direction of this bias depends on the relationship between the selection mechanism and the underlying data structure. 
+
+Selection bias is a major challenge in statistical inference and can lead to incorrect conclusions if not properly accounted for.
 
 In real-world applications, this could represent:
 - Survey non-response that varies systematically by demographic groups
