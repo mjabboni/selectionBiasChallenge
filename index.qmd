@@ -104,11 +104,13 @@ The concept originates from a popular statistics meme format that uses simple im
 #| echo: false
 #| fig-cap: "Statistics meme demonstrating selection bias"
 #| layout-ncol: 2
+#| fig-width: 10
+#| fig-height: 10
 
 import matplotlib.pyplot as plt
 
 # Create figure with subplots for each component
-fig, axes = plt.subplots(2, 2, figsize=(3.5,3))
+fig, axes = plt.subplots(2, 2, figsize=(10, 10))
 
 # Original Image (Reality)
 axes[0, 0].imshow(gray_image, cmap='gray')
@@ -134,6 +136,8 @@ plt.tight_layout()
 plt.show()
 ```
 
+<br>
+
 ## Understanding Selection Bias
 
 This meme demonstrates selection bias by showing how systematic missing data patterns distort our understanding of reality. The original image (Reality) represents the true population, while the stippled version (Your Model) shows our data collection. When selection bias removes data points in a systematic "S" pattern, the resulting estimate becomes biased and no longer represents the true population, just as missing data in real-world studies can lead to incorrect conclusions.
@@ -145,6 +149,7 @@ Selection bias introduces systematic error into our estimates. Mathematically, i
 **Bias(θ̂) = E[θ̂] - θ**
 
 In this visualization:
+
 - **Reality (original image)**: Represents the true parameter θ we're trying to estimate
 
 - **Your Model (stippled image)**: Shows our sampling mechanism—which observations we collect
