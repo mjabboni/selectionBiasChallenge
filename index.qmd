@@ -103,9 +103,9 @@ The concept originates from a popular statistics meme format that uses simple im
 #| label: final-meme-output
 #| echo: false
 #| fig-cap: "Statistics meme demonstrating selection bias"
-#| layout-ncol: 1
-#| fig-width: 6
-#| fig-height: 6
+#| layout-ncol: 4
+#| fig-width: 100
+#| fig-height: 100
 
 import matplotlib.pyplot as plt
 
