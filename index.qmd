@@ -93,6 +93,8 @@ create_statistics_meme(
 )
 ```
 
+## The Meme
+
 ```{python}
 #| label: final-meme-output
 #| echo: false
