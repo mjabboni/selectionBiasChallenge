@@ -104,13 +104,13 @@ The concept originates from a popular statistics meme format that uses simple im
 #| echo: false
 #| fig-cap: "Statistics meme demonstrating selection bias"
 #| layout-ncol: 2
-#| fig-width: 10
-#| fig-height: 10
+#| fig-width: 15
+#| fig-height: 15
 
 import matplotlib.pyplot as plt
 
 # Create figure with subplots for each component
-fig, axes = plt.subplots(2, 2, figsize=(10, 10))
+fig, axes = plt.subplots(2, 2, figsize=(15, 15))
 
 # Original Image (Reality)
 axes[0, 0].imshow(gray_image, cmap='gray')
@@ -150,6 +150,7 @@ Selection bias introduces systematic error into our estimates. Mathematically, i
 
 In this visualization:
 
+<br>
 
 - **Reality (original image)**: Represents the true parameter θ we're trying to estimate
 
