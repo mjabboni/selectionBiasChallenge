@@ -67,6 +67,8 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="the-meme" class="level2">
 <h2 class="anchored" data-anchor-id="the-meme">The Meme</h2>
+<p>This visualization demonstrates a fundamental challenge in statistical inference: <strong>selection bias</strong>. The meme uses a four-panel layout to illustrate how systematic patterns of missing data can distort our understanding of reality.</p>
+<p>The concept originates from a popular statistics meme format that uses simple images and masking patterns to show how selection bias works. When data is missing not at random but follows a systematic pattern (represented here by the letter “S”), our estimates become biased—we no longer see the true picture, but rather a distorted version shaped by which data points we were able to observe.</p>
 <div id="cell-final-meme-output" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="6">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -83,6 +85,15 @@ ul.task-list li input[type="checkbox"] {
 <section id="understanding-selection-bias" class="level2">
 <h2 class="anchored" data-anchor-id="understanding-selection-bias">Understanding Selection Bias</h2>
 <p>This meme demonstrates selection bias by showing how systematic missing data patterns distort our understanding of reality. The original image (Reality) represents the true population, while the stippled version (Your Model) shows our data collection. When selection bias removes data points in a systematic “S” pattern, the resulting estimate becomes biased and no longer represents the true population, just as missing data in real-world studies can lead to incorrect conclusions.</p>
+<section id="bias-estimation" class="level3">
+<h3 class="anchored" data-anchor-id="bias-estimation">Bias Estimation</h3>
+<p>Selection bias introduces systematic error into our estimates. Mathematically, if we denote the true population parameter as θ and our biased estimate as θ̂, the bias is defined as:</p>
+<p><strong>Bias(θ̂) = E[θ̂] - θ</strong></p>
+<p>In this visualization: - <strong>Reality (original image)</strong>: Represents the true parameter θ we’re trying to estimate - <strong>Your Model (stippled image)</strong>: Shows our sampling mechanism—which observations we collect - <strong>Selection Bias (S pattern)</strong>: The systematic filter that determines which data points are observed - <strong>Biased Estimate (masked result)</strong>: Our estimate θ̂ based only on the selected data</p>
+<p>When data is Missing Completely at Random (MCAR), the expected value of our estimate equals the true parameter, and bias is zero. However, when missingness follows a systematic pattern—as shown by the “S” mask—we get selection bias, and E[θ̂] ≠ θ. The magnitude and direction of this bias depends on the relationship between the selection mechanism and the underlying data structure.</p>
+<p>In real-world applications, this could represent: - Survey non-response that varies systematically by demographic groups - Clinical trials where dropout is related to treatment side effects - Observational studies where exposure and outcome both influence selection into the study sample</p>
+<p>The key lesson: <strong>If you can’t see the full picture, you might be seeing a completely different pattern than what actually exists.</strong></p>
+</section>
 </section>
 
 </main>
