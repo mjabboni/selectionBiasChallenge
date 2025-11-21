@@ -114,22 +114,22 @@ fig, axes = plt.subplots(2, 2, figsize=(10, 10))
 
 # Original Image (Reality)
 axes[0, 0].imshow(gray_image, cmap='gray')
-axes[0, 0].set_title('Reality', fontsize=16, fontweight='bold')
+axes[0, 0].set_title('Reality', fontsize=12, fontweight='bold')
 axes[0, 0].axis('off')
 
 # Stippled Image (Your Model)
 axes[0, 1].imshow(stipple_pattern, cmap='gray')
-axes[0, 1].set_title('Your Model', fontsize=16, fontweight='bold')
+axes[0, 1].set_title('Your Model', fontsize=12, fontweight='bold')
 axes[0, 1].axis('off')
 
 # Block Letter (Selection Bias Pattern)
 axes[1, 0].imshow(block_letter, cmap='gray')
-axes[1, 0].set_title('Selection Bias (S)', fontsize=16, fontweight='bold')
+axes[1, 0].set_title('Selection Bias (S)', fontsize=12, fontweight='bold')
 axes[1, 0].axis('off')
 
 # Masked Stipple (Biased Estimate)
 axes[1, 1].imshow(masked_stipple, cmap='gray')
-axes[1, 1].set_title('Biased Estimate', fontsize=16, fontweight='bold')
+axes[1, 1].set_title('Biased Estimate', fontsize=12, fontweight='bold')
 axes[1, 1].axis('off')
 
 plt.tight_layout()
@@ -149,6 +149,7 @@ Selection bias introduces systematic error into our estimates. Mathematically, i
 **Bias(θ̂) = E[θ̂] - θ**
 
 In this visualization:
+
 
 - **Reality (original image)**: Represents the true parameter θ we're trying to estimate
 
