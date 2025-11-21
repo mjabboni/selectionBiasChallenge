@@ -104,32 +104,32 @@ The concept originates from a popular statistics meme format that uses simple im
 #| echo: false
 #| fig-cap: "Statistics meme demonstrating selection bias"
 #| layout-ncol: 2
-#| fig-width: 5
-#| fig-height: 5
+#| fig-width: 3
+#| fig-height: 3
 
 import matplotlib.pyplot as plt
 
 # Create figure with subplots for each component
-fig, axes = plt.subplots(2, 2, figsize=(30, 30))
+fig, axes = plt.subplots(2, 2, figsize=(3, 3))
 
 # Original Image (Reality)
 axes[0, 0].imshow(gray_image, cmap='gray')
-axes[0, 0].set_title('Reality', fontsize=12, fontweight='bold')
+axes[0, 0].set_title('Reality', fontsize=8, fontweight='bold')
 axes[0, 0].axis('off')
 
 # Stippled Image (Your Model)
 axes[0, 1].imshow(stipple_pattern, cmap='gray')
-axes[0, 1].set_title('Your Model', fontsize=12, fontweight='bold')
+axes[0, 1].set_title('Your Model', fontsize=8, fontweight='bold')
 axes[0, 1].axis('off')
 
 # Block Letter (Selection Bias Pattern)
 axes[1, 0].imshow(block_letter, cmap='gray')
-axes[1, 0].set_title('Selection\n Bias (S)', fontsize=12, fontweight='bold')
+axes[1, 0].set_title('Selection\n Bias (S)', fontsize=8, fontweight='bold')
 axes[1, 0].axis('off')
 
 # Masked Stipple (Biased Estimate)
 axes[1, 1].imshow(masked_stipple, cmap='gray')
-axes[1, 1].set_title('Biased\n Estimate', fontsize=12, fontweight='bold')
+axes[1, 1].set_title('Biased\n Estimate', fontsize=8, fontweight='bold')
 axes[1, 1].axis('off')
 
 plt.tight_layout()
