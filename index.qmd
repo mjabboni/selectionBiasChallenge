@@ -50,7 +50,7 @@ Selection bias occurs when observed data isn't representative of the population.
 
 Here's what your final meme should look like:
 
-![Four-panel statistics meme showing Reality (original image), Your Model (stippled version), Selection Bias (letter S), and Estimate (masked stippled image)](statistics_meme.png)
+![Four-panel statistics meme showing Reality (original image), Your Model (stippled version), Selection Bias (letter S), and Estimate (masked stippled image)](my_statistics_meme.png)
 
 **Your challenge:** Create a similar meme using your own image, with all code hidden in your `index.qmd` file. The final output should show only the meme image and a brief 1-3 sentence explanation of how it demonstrates selection bias.
 
