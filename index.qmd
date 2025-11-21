@@ -110,7 +110,7 @@ The concept originates from a popular statistics meme format that uses simple im
 import matplotlib.pyplot as plt
 
 # Create figure with subplots for each component
-fig, axes = plt.subplots(2, 2, figsize=(3, 3))
+fig, axes = plt.subplots(2, 2, figsize=(6, 6))
 
 # Original Image (Reality)
 axes[0, 0].imshow(gray_image, cmap='gray')
