@@ -71,6 +71,22 @@ tonal_img, average_tones, stats = create_tonal(
 ```
 
 ```{python}
+#| label: step3-tonal
+#| echo: false
+#| output: false
+
+from step3_create_tonal import create_tonal
+
+# Create tonal analysis (optional - helps understand tone distribution)
+tonal_img, average_tones, tonal_stats = create_tonal(
+    gray_image,
+    grid_rows=16,
+    grid_cols=12,
+    return_full_image=True
+)
+```
+
+```{python}
 #| label: step4-block-letter
 #| echo: false
 #| output: false
