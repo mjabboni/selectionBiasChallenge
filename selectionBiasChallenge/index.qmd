@@ -1,0 +1,174 @@
+---
+title: "Selection Bias Demonstration"
+subtitle: "A Visual Statistics Meme"
+format:
+  html: default
+execute:
+  echo: false
+  eval: true
+---
+
+```{python}
+#| label: step1-prepare
+#| echo: false
+#| output: false
+
+import numpy as np
+import matplotlib.pyplot as plt
+from step1_prepare_image import prepare_image
+
+# Load and prepare the image
+img_path = 'mike.abbo.jpg'
+gray_image = prepare_image(img_path, max_size=512)
+```
+
+```{python}
+#| label: step2-stipple
+#| echo: false
+#| output: false
+#| message: false
+#| warning: false
+
+from step2_create_stipple import create_stipple
+
+# Create stippled image
+stipple_pattern, samples = create_stipple(
+    gray_image,
+    percentage=0.08,
+    sigma=0.9,
+    content_bias=0.9,
+    noise_scale_factor=0.1,
+    extreme_downweight=0.5,
+    extreme_threshold_low=0.2,
+    extreme_threshold_high=0.8,
+    extreme_sigma=0.1
+)
+```
+
+```{python}
+#| label: step4-block-letter
+#| echo: false
+#| output: false
+
+from step4_create_block_letter import create_block_letter_s
+
+# Get image dimensions
+h, w = gray_image.shape
+
+# Create block letter S
+block_letter = create_block_letter_s(h, w, letter="S", font_size_ratio=0.9)
+```
+
+```{python}
+#| label: step5-masked
+#| echo: false
+#| output: false
+
+from step5_create_masked import create_masked_stipple
+
+# Create masked stippled image
+masked_stipple = create_masked_stipple(
+    stipple_pattern,
+    block_letter,
+    threshold=0.5
+)
+```
+
+```{python}
+#| label: create-final-meme
+#| echo: false
+#| output: false
+
+from create_meme import create_statistics_meme
+
+# Create the final meme
+create_statistics_meme(
+    original_img=gray_image,
+    stipple_img=stipple_pattern,
+    block_letter_img=block_letter,
+    masked_stipple_img=masked_stipple,
+    output_path="my_statistics_meme.png",
+    dpi=150,
+    background_color="white"
+)
+```
+
+## The Meme
+
+This visualization demonstrates a fundamental challenge in statistical inference: **selection bias**. The meme uses a four-panel layout to illustrate how systematic patterns of missing data can distort our understanding of reality.
+
+The concept originates from a popular statistics meme format that uses simple images and masking patterns to show how selection bias works. When data is missing not at random but follows a systematic pattern (represented here by the letter "S"), our estimates become biased—we no longer see the true picture, but rather a distorted version shaped by which data points we were able to observe.
+
+```{python}
+#| label: final-meme-output
+#| echo: false
+#| fig-cap: "Statistics meme demonstrating selection bias"
+#| layout-ncol: 2
+#| layout-nrow: 2
+#| fig-width: 20
+#| fig-height: 20
+
+import matplotlib.pyplot as plt
+
+# Create figure with subplots for each component
+fig, axes = plt.subplots(2, 2, figsize=(10, 10))
+
+# Original Image (Reality)
+axes[0, 0].imshow(gray_image, cmap='gray')
+axes[0, 0].set_title('Reality', fontsize=18, fontweight='bold')
+axes[0, 0].axis('off')
+
+# Stippled Image (Your Model)
+axes[0, 1].imshow(stipple_pattern, cmap='gray')
+axes[0, 1].set_title('Your Model', fontsize=18, fontweight='bold')
+axes[0, 1].axis('off')
+
+# Block Letter (Selection Bias Pattern)
+axes[1, 0].imshow(block_letter, cmap='gray')
+axes[1, 0].set_title('Selection\n Bias (S)', fontsize=18, fontweight='bold')
+axes[1, 0].axis('off')
+
+# Masked Stipple (Biased Estimate)
+axes[1, 1].imshow(masked_stipple, cmap='gray')
+axes[1, 1].set_title('Biased\n Estimate', fontsize=18, fontweight='bold')
+axes[1, 1].axis('off')
+
+plt.tight_layout()
+plt.show()
+```
+
+<br>
+
+## Understanding Selection Bias
+
+This meme demonstrates selection bias by showing how systematic missing data patterns distort our understanding of reality. The original image (Reality) represents the true population, while the stippled version (Your Model) shows our data collection. When selection bias removes data points in a systematic "S" pattern, the resulting estimate becomes biased and no longer represents the true population, just as missing data in real-world studies can lead to incorrect conclusions.
+
+### Bias Estimation
+
+Selection bias introduces systematic error into our estimates. Mathematically, if we denote the true population parameter as θ and our biased estimate as θ̂, the bias is defined as:
+
+**Bias(θ̂) = E[θ̂] - θ**
+
+** In this visualization:
+****************************
+
+- **Reality (original image)**: Represents the true parameter θ we're trying to estimate
+
+- **Your Model (stippled image)**: Shows our sampling mechanism—which observations we collect
+
+- **Selection Bias (S pattern)**: The systematic filter that determines which data points are observed
+
+- **Biased Estimate (masked result)**: Our estimate θ̂ based only on the selected data
+
+When data is Missing Completely at Random (MCAR), the expected value of our estimate equals the true parameter, and bias is zero. However, when missingness follows a systematic pattern—as shown by the "S" mask—we get selection bias, and E[θ̂] ≠ θ. The magnitude and direction of this bias depends on the relationship between the selection mechanism and the underlying data structure. 
+
+Selection bias is a major challenge in statistical inference and can lead to incorrect conclusions if not properly accounted for.
+
+In real-world applications, this could represent:
+- Survey non-response that varies systematically by demographic groups
+- Clinical trials where dropout is related to treatment side effects
+- Observational studies where exposure and outcome both influence selection into the study sample
+
+The key lesson: 
+-**If you can't see the full picture, you might be seeing a completely different pattern than what actually exists.**
+
