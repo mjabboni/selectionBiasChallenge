@@ -52,7 +52,7 @@ def create_statistics_meme(
         Saves the meme to the specified output path
     """
     # Create figure with 2x2 subplots matching the QMD layout
-    fig, axes = plt.subplots(2, 2, figsize=(20, 10), facecolor=background_color)
+    fig, axes = plt.subplots(2, 2, figsize=(12, 10), facecolor=background_color)
     
     # Original Image (Reality) - Top Left
     axes[0, 0].imshow(original_img, cmap='gray')
