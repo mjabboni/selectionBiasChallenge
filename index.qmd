@@ -19,7 +19,7 @@ from step1_prepare_image import prepare_image
 
 # Load and prepare the image
 img_path = 'mike.abbo.jpg'
-gray_image = prepare_image(img_path, max_size=512)
+gray_image = prepare_image(img_path, max_size=1024)
 ```
 
 ```{python}
@@ -129,7 +129,7 @@ create_statistics_meme(
     block_letter_img=block_letter,
     masked_stipple_img=masked_stipple,
     output_path="my_statistics_meme.png",
-    dpi=150,
+    dpi=300,
     background_color="white"
 )
 ```
@@ -146,13 +146,13 @@ The concept originates from a popular statistics meme format that uses simple im
 #| fig-cap: "Statistics meme demonstrating selection bias"
 #| layout-ncol: 2
 #| layout-nrow: 2
-#| fig-width: 12
-#| fig-height: 10
+#| fig-width: 24
+#| fig-height: 20
 
 import matplotlib.pyplot as plt
 
 # Create figure with subplots for each component
-fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+fig, axes = plt.subplots(2, 2, figsize=(24, 20))
 
 # Original Image (Reality)
 axes[0, 0].imshow(gray_image, cmap='gray')

@@ -15,7 +15,7 @@ def create_statistics_meme(
     block_letter_img: np.ndarray,
     masked_stipple_img: np.ndarray,
     output_path: str,
-    dpi: int = 150,
+    dpi: int = 300,
     background_color: str = "white"
 ) -> None:
     """
@@ -40,7 +40,7 @@ def create_statistics_meme(
     output_path : str
         Path where the meme PNG will be saved
     dpi : int, optional
-        Resolution in dots per inch (default is 150)
+        Resolution in dots per inch (default is 300)
         Higher values (200-300) give better quality
     background_color : str, optional
         Background color for the figure (default is "white")
@@ -52,7 +52,7 @@ def create_statistics_meme(
         Saves the meme to the specified output path
     """
     # Create figure with 2x2 subplots matching the QMD layout
-    fig, axes = plt.subplots(2, 2, figsize=(12, 10), facecolor=background_color)
+    fig, axes = plt.subplots(2, 2, figsize=(24, 20), facecolor=background_color)
     
     # Original Image (Reality) - Top Left
     axes[0, 0].imshow(original_img, cmap='gray')
