@@ -147,12 +147,12 @@ The concept originates from a popular statistics meme format that uses simple im
 #| layout-ncol: 2
 #| layout-nrow: 2
 #| fig-width: 24
-#| fig-height: 20
+#| fig-height: 7
 
 import matplotlib.pyplot as plt
 
 # Create figure with subplots for each component
-fig, axes = plt.subplots(2, 2, figsize=(24, 20))
+fig, axes = plt.subplots(2, 2, figsize=(10, 7))
 
 # Original Image (Reality)
 axes[0, 0].imshow(gray_image, cmap='gray')
