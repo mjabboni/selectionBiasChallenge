@@ -190,8 +190,7 @@ Selection bias introduces systematic error into our estimates. Mathematically, i
 
 **Bias(θ̂) = E[θ̂] - θ**
 
-** In this visualization:
-****************************
+In this visualization:
 
 - **Reality (original image)**: Represents the true parameter θ we're trying to estimate
 
@@ -209,25 +208,3 @@ In real-world applications, this could represent:
 - Survey non-response that varies systematically by demographic groups
 - Clinical trials where dropout is related to treatment side effects
 - Observational studies where exposure and outcome both influence selection into the study sample
-
-The key lesson: 
--**If you can't see the full picture, you might be seeing a completely different pattern than what actually exists.**
-
-## Python Modules Reference
-
-This project uses the following Python modules to create the selection bias visualization:
-
-### Core Pipeline Modules
-
-1. **step1_prepare_image.py** - Prepares and normalizes input images
-2. **step2_create_stipple.py** - Creates blue noise stippling patterns
-3. **step3_create_tonal.py** - [Optional] Performs tonal analysis for parameter tuning
-4. **step4_create_block_letter.py** - Generates block letter masks for selection bias
-5. **step5_create_masked.py** - Applies masks to create biased estimates
-6. **create_meme.py** - Assembles the final four-panel meme visualization
-
-### Supporting Modules
-
-7. **importance_map.py** - Computes importance weights for stippling (identifies which regions should receive more dots)
-8. **stippling_functions.py** - Implements void-and-cluster blue noise algorithm with toroidal Gaussian kernels
-
