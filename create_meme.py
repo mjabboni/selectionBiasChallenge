@@ -7,7 +7,6 @@ four-panel meme demonstrating selection bias.
 
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.gridspec import GridSpec
 
 
 def create_statistics_meme(
@@ -26,7 +25,7 @@ def create_statistics_meme(
     1. Reality - The original image (true population)
     2. Your Model - The stippled image (data collection/sampling)
     3. Selection Bias - The block letter showing systematic missing pattern
-    4. Estimate - The masked stippled image (biased estimate)
+    4. Biased Estimate - The masked stippled image (biased estimate)
     
     Parameters
     ----------
@@ -52,46 +51,31 @@ def create_statistics_meme(
     None
         Saves the meme to the specified output path
     """
-    # Panel titles and images
-    panels = [
-        ("Reality", original_img),
-        ("Your Model", stipple_img),
-        ("Selection Bias", block_letter_img),
-        ("Estimate", masked_stipple_img)
-    ]
+    # Create figure with 2x2 subplots matching the QMD layout
+    fig, axes = plt.subplots(2, 2, figsize=(10, 10), facecolor=background_color)
     
-    # Create figure with 1×4 layout (four panels side by side)
-    fig = plt.figure(figsize=(16, 4.5), facecolor=background_color)
+    # Original Image (Reality) - Top Left
+    axes[0, 0].imshow(original_img, cmap='gray')
+    axes[0, 0].set_title('Reality', fontsize=18, fontweight='bold')
+    axes[0, 0].axis('off')
     
-    # Create grid for better layout control
-    gs = GridSpec(1, 4, figure=fig, wspace=0.15, hspace=0.1)
+    # Stippled Image (Your Model) - Top Right
+    axes[0, 1].imshow(stipple_img, cmap='gray')
+    axes[0, 1].set_title('Your Model', fontsize=18, fontweight='bold')
+    axes[0, 1].axis('off')
     
-    # Create each panel
-    for idx, (title, img) in enumerate(panels):
-        ax = fig.add_subplot(gs[0, idx])
-        
-        # Display the image
-        ax.imshow(img, cmap='gray', vmin=0, vmax=1)
-        ax.axis('off')
-        
-        # Add title above each panel
-        ax.set_title(
-            title,
-            fontsize=16,
-            fontweight='bold',
-            pad=15
-        )
+    # Block Letter (Selection Bias Pattern) - Bottom Left
+    axes[1, 0].imshow(block_letter_img, cmap='gray')
+    axes[1, 0].set_title('Selection\n Bias (S)', fontsize=18, fontweight='bold')
+    axes[1, 0].axis('off')
     
-    # Add overall title
-    fig.suptitle(
-        'Statistics Meme: Selection Bias in Action',
-        fontsize=20,
-        fontweight='bold',
-        y=0.98
-    )
+    # Masked Stipple (Biased Estimate) - Bottom Right
+    axes[1, 1].imshow(masked_stipple_img, cmap='gray')
+    axes[1, 1].set_title('Biased\n Estimate', fontsize=18, fontweight='bold')
+    axes[1, 1].axis('off')
     
-    # Adjust layout to prevent title overlap
-    plt.tight_layout(rect=[0, 0, 1, 0.96])
+    # Adjust layout
+    plt.tight_layout()
     
     # Save the figure
     plt.savefig(
