@@ -29,6 +29,10 @@ gray_image = prepare_image(img_path, max_size=512)
 #| message: false
 #| warning: false
 
+# step2_create_stipple.py uses:
+# - importance_map.py: Computes importance weights for stippling
+# - stippling_functions.py: Blue noise void-and-cluster algorithm
+
 from step2_create_stipple import create_stipple
 
 # Create stippled image
@@ -42,6 +46,27 @@ stipple_pattern, samples = create_stipple(
     extreme_threshold_low=0.2,
     extreme_threshold_high=0.8,
     extreme_sigma=0.1
+)
+```
+
+```{python}
+#| label: step3-tonal-analysis
+#| echo: false
+#| output: false
+#| eval: false
+
+# OPTIONAL: Tonal analysis for parameter tuning
+# step3_create_tonal.py: Creates box-averaged tonal analysis
+# Useful for understanding tone distribution and tuning stippling parameters
+
+from step3_create_tonal import create_tonal
+
+# Create tonal analysis (optional - set eval: true to run)
+tonal_img, average_tones, stats = create_tonal(
+    gray_image,
+    grid_rows=16,
+    grid_cols=12,
+    return_full_image=True
 )
 ```
 
@@ -171,4 +196,22 @@ In real-world applications, this could represent:
 
 The key lesson: 
 -**If you can't see the full picture, you might be seeing a completely different pattern than what actually exists.**
+
+## Python Modules Reference
+
+This project uses the following Python modules to create the selection bias visualization:
+
+### Core Pipeline Modules
+
+1. **step1_prepare_image.py** - Prepares and normalizes input images
+2. **step2_create_stipple.py** - Creates blue noise stippling patterns
+3. **step3_create_tonal.py** - [Optional] Performs tonal analysis for parameter tuning
+4. **step4_create_block_letter.py** - Generates block letter masks for selection bias
+5. **step5_create_masked.py** - Applies masks to create biased estimates
+6. **create_meme.py** - Assembles the final four-panel meme visualization
+
+### Supporting Modules
+
+7. **importance_map.py** - Computes importance weights for stippling (identifies which regions should receive more dots)
+8. **stippling_functions.py** - Implements void-and-cluster blue noise algorithm with toroidal Gaussian kernels
 
